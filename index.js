@@ -97,21 +97,25 @@ function movePlayer(){
     if(keys[keys.length - 1] === 37){
         const destination = player.x - player.speed;
         if (player.x > 0 && checkHorizontal(destination)) player.x -= player.speed;
+        ctx.translate(player.speed, 0);
         player.frameY = 1;
     }
     if(keys[keys.length - 1] === 38){
         const destination = player.y - player.speed;
         if (player.y > 0 && checkVertical(destination)) player.y -= player.speed;
+        ctx.translate(0, player.speed)
         player.frameY = 3;
     }
     if(keys[keys.length - 1] === 39){
         const destination = player.x + player.width + player.speed;
         if (player.x < (canvas.width - player.width * game.scale) && checkHorizontal(destination)) player.x += player.speed;
+        ctx.translate(- player.speed, 0);
         player.frameY = 2;
     }
     if(keys[keys.length - 1] === 40){
         const destination = player.y + player.height + player.speed;
-        if (player.y < (canvas.height - player.height * game.scale) && checkVertical(destination)) player.y += player.speed
+        if (player.y < (canvas.height - player.height * game.scale) && checkVertical(destination)) player.y += player.speed;
+        ctx.translate(0, - player.speed)
         player.frameY= 0;
     }
 }
